@@ -6,13 +6,15 @@
     import StatCard from '../components/StatCard.vue';
     import LineChart from '../components/LineChart.vue';
     import StatItem from '../components/StatItem.vue';
+    import Banner from '../components/Banner.vue';
 
     export default {
         name: 'Dashboard',
         components: {
             StatCard,
             LineChart,
-            StatItem
+            StatItem,
+            Banner
         },
         data() {
             return {
@@ -101,6 +103,12 @@
     }
 </script>
 <template>
+    <Banner>
+        <template #title>Данные по COVID-19</template>
+        <template #description>
+            Здесь мы собрали основную информацию.
+        </template>
+    </Banner>
     <div class="dashboard">
         <div class="container">
             <div v-if="loading" class="loading">
