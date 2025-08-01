@@ -5,12 +5,14 @@
     import covidApi from '../services/covid.api.js';
     import StatCard from '../components/StatCard.vue';
     import LineChart from '../components/LineChart.vue';
+    import StatItem from '../components/StatItem.vue';
 
     export default {
         name: 'Dashboard',
         components: {
             StatCard,
-            LineChart
+            LineChart,
+            StatItem
         },
         data() {
             return {
@@ -141,6 +143,17 @@
                     :chartData="historicalChartData"
                     :importDisplayMode="'daily'"
                 />
+                <div class="chart-container">
+                    <h3>Топ-10 стран по количеству случаев</h3>
+                    <div class="countries-list">
+                        <StatItem
+                            v-for="(country, index) in topCountries"
+                            :key="country.country"
+                            :country="country"
+                            :index="index"
+                        />
+                    </div>
+                </div>
             </div>
         </div>
     </div>
