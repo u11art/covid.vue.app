@@ -1,0 +1,138 @@
+:root {
+    color-scheme: light dark;
+
+    --color-main: #7134a9;
+
+    --color-back: Canvas;
+    --color-text: CanvasText;
+
+    --color-link: light-dark(#222, #ddd);
+    --color-link-back: light-dark(#ddd, #222);
+    --color-mono: light-dark(#000, #fff);
+
+    --color-select: light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1));
+
+    --filter: light-dark(0.9, 1.1);
+    --spacing: 4px;
+    --padding: 0.5rem;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    font-weight: normal;
+}
+
+body {
+    min-height: 100vh;
+    color: var(--color-text);
+    background: var(--color-background);
+    line-height: 1.6;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        'Fira Sans',
+        'Droid Sans',
+        'Helvetica Neue',
+        sans-serif;
+    font-size: 15px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+label {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+button {
+    background: var(--color-link);
+    color: var(--color-back);
+    padding: var(--padding) calc(var(--padding) * 2);
+    border: none;
+    border-radius: calc(var(--padding) / 2);
+}
+
+input {
+    background: var(--color-back);
+    padding: var(--padding) calc(var(--padding) * 2);
+    border: 2px solid var(--color-text);
+    border-radius: calc(var(--padding) / 2);
+}
+
+input:focus {
+    outline: none;
+    border: 2px solid var(--color-main);
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--padding);
+    padding-right: var(--padding);
+    width: 100%;
+}
+
+main.container {
+    padding-left: calc(var(--padding) * 2);
+    padding-right: calc(var(--padding) * 2);
+}
+
+@media (min-width: 640px) {
+    .container {
+        max-width: 640px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 768px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1024px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+
+@media (min-width: 1536px) {
+    .container {
+        max-width: 1536px;
+    }
+}
