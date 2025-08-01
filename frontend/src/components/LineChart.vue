@@ -1,6 +1,8 @@
 <script>
     import VueApexCharts from 'vue3-apexcharts'
 
+    import { isDark } from '../stores/theme.js'
+
     export default {
         name: 'LineChart',
         components: {
@@ -29,6 +31,9 @@
             }
         },
         computed: {
+            isDarkTheme() {
+                return isDark.value
+            },
             shouldShowAggregation() {
                 return this.chartData?.labels?.length > 90
             },
@@ -36,6 +41,7 @@
                 return {
                     chart: {
                         type: 'line',
+                        background: 'transparent',
                         toolbar: {
                             show: true,
                             tools: {
@@ -91,7 +97,7 @@
                         strokeDashArray: 3
                     },
                     theme: {
-                        mode: 'light'
+                        mode: this.isDarkTheme ? 'dark' : 'light'
                     }
                 }
             }

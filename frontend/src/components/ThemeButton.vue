@@ -1,23 +1,12 @@
 <script setup>
     import iconLight from '../assets/icons/light.svg'
     import iconDark from '../assets/icons/dark.svg'
-    import { ref, onMounted } from 'vue'
 
-    const isDark = ref(false)
-
-    const setTheme = (dark) => {
-        isDark.value = dark
-        document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
-        localStorage.setItem('theme', dark ? 'dark' : 'light')
-    }
-
-    const toggleTheme = () => {
-        setTheme(!isDark.value)
-    }
+    import { onMounted } from 'vue'
+    import { isDark, toggleTheme, initTheme } from '../stores/theme.js'
 
     onMounted(() => {
-        const saved = localStorage.getItem('theme')
-        setTheme(saved === 'dark')
+        initTheme()
     })
 </script>
 <template>
