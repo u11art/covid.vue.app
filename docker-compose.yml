@@ -1,0 +1,7 @@
+services:
+  frontend:
+    build: ./frontend
+    container_name: vue_covid_app
+    ports:
+      - "8080:80"
+    restart: unless-stopped
