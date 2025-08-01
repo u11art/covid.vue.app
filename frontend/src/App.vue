@@ -1,7 +1,7 @@
-<script setup></script>
+<script></script>
 
 <template>
-  <h1>В разработке</h1>
+  <RouterView />
 </template>
 
 <style scoped></style>
