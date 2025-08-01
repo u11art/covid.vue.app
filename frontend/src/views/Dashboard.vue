@@ -1,11 +1,16 @@
 <script>
+    import { format } from 'date-fns';
+    import { ru } from 'date-fns/locale';
+
     import covidApi from '../services/covid.api.js';
     import StatCard from '../components/StatCard.vue';
+    import LineChart from '../components/LineChart.vue';
 
     export default {
         name: 'Dashboard',
         components: {
-            StatCard
+            StatCard,
+            LineChart
         },
         data() {
             return {
@@ -40,6 +45,7 @@
                     this.globalData = globalData
                     this.countriesData = countriesData
                     this.historicalData = historicalData
+                    this.prepareHistoricalChart()
                 } catch (error) {
                     this.error = 'Ошибка при загрузке данных. Попробуйте обновить страницу.'
                     console.error('Ошибка при загрузке данных:', error)
@@ -47,6 +53,48 @@
                     this.loading = false
                 }
             },
+            prepareHistoricalChart() {
+                if (!this.historicalData) return
+
+                const dates = Object.keys(this.historicalData.cases)
+                const cases = Object.values(this.historicalData.cases)
+                const deaths = Object.values(this.historicalData.deaths)
+                const recovered = Object.values(this.historicalData.recovered)
+
+                const formattedDates = dates.map(date => {
+                    return format(new Date(date), 'dd MMM', { locale: ru })
+                })
+
+                this.historicalChartData = {
+                    labels: formattedDates,
+                    datasets: [
+                        {
+                            label: 'Случаи',
+                            data: cases,
+                            borderColor: '#3498db',
+                            backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                            fill: false,
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Смерти',
+                            data: deaths,
+                            borderColor: '#e74c3c',
+                            backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                            fill: false,
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Выздоровления',
+                            data: recovered,
+                            borderColor: '#27ae60',
+                            backgroundColor: 'rgba(39, 174, 96, 0.1)',
+                            fill: false,
+                            tension: 0.4
+                        }
+                    ]
+                }
+            }
         }
     }
 </script>
@@ -87,6 +135,12 @@
                         type="active"
                     />
                 </div>
+                <LineChart
+                    v-if="historicalChartData"
+                    title="Глобальная динамика COVID-19 (последние 30 дней)"
+                    :chartData="historicalChartData"
+                    :importDisplayMode="'daily'"
+                />
             </div>
         </div>
     </div>
