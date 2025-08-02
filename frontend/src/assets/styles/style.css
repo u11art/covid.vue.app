@@ -69,29 +69,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-label {
-    font-size: 1rem;
-    font-weight: 500;
-}
-
-button {
-    background: var(--color-link);
-    color: var(--color-back);
-    padding: var(--padding) calc(var(--padding) * 2);
-    border: none;
-    border-radius: calc(var(--padding) / 2);
-}
-
-input {
-    background: var(--color-back);
-    padding: var(--padding) calc(var(--padding) * 2);
-    border: 2px solid var(--color-text);
-    border-radius: calc(var(--padding) / 2);
-}
-
-input:focus {
-    outline: none;
-    border: 2px solid var(--color-main);
+div.leaflet-control-attribution.leaflet-control {
+  display: none;
 }
 
 .container {

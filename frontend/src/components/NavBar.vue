@@ -32,6 +32,7 @@
             <section>
                 <h3>Страницы</h3>
                 <RouterLink to="/" active-class="active" @click="menuOpen = !menuOpen">Главная</RouterLink>
+                <RouterLink to="/map" active-class="active" @click="menuOpen = !menuOpen">Карта</RouterLink>
             </section>
         </aside>
     </header>

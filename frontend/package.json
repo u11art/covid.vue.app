@@ -15,7 +15,9 @@
     "apexcharts": "^5.3.2",
     "axios": "^1.11.0",
     "date-fns": "^4.1.0",
+    "leaflet": "^1.9.4",
     "vue": "^3.5.18",
+    "vue-leaflet": "^0.1.0",
     "vue-router": "^4.5.1",
     "vue3-apexcharts": "^1.8.0"
   },
