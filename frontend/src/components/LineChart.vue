@@ -108,12 +108,31 @@
                 immediate: true,
                 deep: true
             },
-            displayMode: 'processData',
-            aggregationType: 'processData'
+            displayMode: {
+                handler: 'processData',
+                immediate: false
+            },
+            aggregationType: {
+                handler: 'processData',
+                immediate: false
+            },
+            isDarkTheme: {
+                handler() {
+                    this.$forceUpdate()
+                },
+                immediate: false
+            }
         },
         methods: {
             processData() {
-                if (!this.chartData || !this.chartData.datasets) {
+                if (!this.chartData || !this.chartData.datasets || !this.chartData.labels) {
+                    this.internalLabels = []
+                    this.internalSeries = []
+                    return
+                }
+
+                // Проверяем, что данные не пустые
+                if (this.chartData.labels.length === 0 || this.chartData.datasets.length === 0) {
                     this.internalLabels = []
                     this.internalSeries = []
                     return
@@ -138,8 +157,16 @@
                 this.internalLabels = data.labels
                 this.internalSeries = data.datasets.map(ds => ({
                     name: ds.label,
-                    data: ds.data
+                    data: ds.data,
+                    color: ds.borderColor || ds.backgroundColor
                 }))
+
+                // Принудительно обновляем компонент для перерисовки графика
+                this.$nextTick(() => {
+                    if (this.$refs.apexChart) {
+                        this.$refs.apexChart.updateOptions(this.chartOptions)
+                    }
+                })
             },
             calculateDerivative(data) {
                 return {
@@ -213,6 +240,7 @@
         </div>
 
         <apexchart
+            ref="apexChart"
             :options="chartOptions"
             :series="internalSeries"
             type="line"

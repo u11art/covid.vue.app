@@ -13,7 +13,7 @@
             <div class="right">
                 <RouterLink to="/"><h1>КовидСтат</h1></RouterLink>
                 <template v-if="!isMobile">
-                    <RouterLink to="/statistic">Статистика</RouterLink>
+                    <RouterLink to="/stat">Статистика</RouterLink>
                     <RouterLink to="/map">Карта</RouterLink>
                 </template>
             </div>
@@ -32,6 +32,7 @@
             <section>
                 <h3>Страницы</h3>
                 <RouterLink to="/" active-class="active" @click="menuOpen = !menuOpen">Главная</RouterLink>
+                <RouterLink to="/stat" active-class="active" @click="menuOpen = !menuOpen">Статистика</RouterLink>
                 <RouterLink to="/map" active-class="active" @click="menuOpen = !menuOpen">Карта</RouterLink>
             </section>
         </aside>
