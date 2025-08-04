@@ -39,15 +39,19 @@
     .item {
         display: grid;
         grid-template-columns: auto auto 1fr auto;
-        gap: 0.5rem;
+        gap: 0.25rem;
         align-items: center;
         padding: 0.5rem;
-        border-radius: 8px;
+        background-color: var(--color-select);
+        border-bottom: solid 2px var(--color-main);
+        overflow: hidden;
+        word-break: break-word;
+        max-width: 100%;
     }
 
     .rank {
         font-weight: 700;
-        min-width: 25px;
+        min-width: 30px;
         text-align: center;
     }
 
@@ -61,19 +65,23 @@
     .info {
         display: flex;
         flex-direction: column;
+        min-width: 0;
+        overflow: hidden;
     }
 
     .stats {
         display: flex;
         flex-direction: column;
-        gap: 0.25rem;
         text-align: right;
+        max-width: 120px;
+        word-break: break-word;
     }
 
     .stat-item {
         display: flex;
-        gap: 0.5rem;
+        justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap;
     }
 
     .deaths {
