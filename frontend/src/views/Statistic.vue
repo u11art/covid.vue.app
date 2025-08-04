@@ -1,6 +1,7 @@
 <script>
   import StatCard from '../components/StatCard.vue'
   import LineChart from '../components/LineChart.vue'
+  import Banner from '../components/Banner.vue'
   import covidApi from '../services/covid.api.js'
   import { format } from 'date-fns'
   import { ru } from 'date-fns/locale'
@@ -9,7 +10,8 @@
     name: 'Statistics',
     components: {
       StatCard,
-      LineChart
+      LineChart,
+      Banner
     },
     data() {
       return {
@@ -87,7 +89,6 @@
           
           if (this.selectedCountry) {
             this.historicalData = await covidApi.getHistoricalCountry(this.selectedCountry, days)
-            // Извлекаем данные из timeline если они есть
             if (this.historicalData.timeline) {
               this.historicalData = this.historicalData.timeline
             }
@@ -109,7 +110,6 @@
         const deaths = Object.values(this.historicalData.deaths)
         const recovered = Object.values(this.historicalData.recovered)
 
-        // Форматируем даты
         const formattedDates = dates.map(date => {
           return format(new Date(date), 'dd MMM', { locale: ru })
         })
@@ -152,6 +152,12 @@
   }
 </script>
 <template>
+  <Banner>
+    <template #title>Статистика</template>
+    <template #description>
+        Получите статистику по конкретным данным.
+    </template>
+  </Banner>
   <div class="dashboard">
     <div class="container">
       <div v-if="loading" class="loading">
@@ -179,7 +185,7 @@
           </select>
         </div>
 
-        <div class="stats-grid">
+        <div class="list">
           <StatCard
             title="Всего случаев"
             :number="currentData.cases"

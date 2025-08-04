@@ -120,7 +120,7 @@
             </div>
       
             <div v-else>
-                <div class="stats-grid">
+                <div class="list">
                     <StatCard
                         title="Всего случаев"
                         :number="globalData.cases"
@@ -153,7 +153,7 @@
                 />
                 <div class="chart-container">
                     <h3>Топ-10 стран по количеству случаев</h3>
-                    <div class="countries-list">
+                    <div class="list">
                         <StatItem
                             v-for="(country, index) in topCountries"
                             :key="country.country"

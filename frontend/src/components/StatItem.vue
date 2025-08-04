@@ -39,19 +39,22 @@
     .item {
         display: grid;
         grid-template-columns: auto auto 1fr auto;
-        gap: 1rem;
+        gap: 0.5rem;
         align-items: center;
-        padding: 1rem;
+        padding: 0.5rem;
+        border-radius: 8px;
     }
 
     .rank {
         font-weight: 700;
-        min-width: 30px;
+        min-width: 25px;
+        text-align: center;
     }
 
     .flag {
-        width: 40px;
-        height: 30px;
+        width: 25px;
+        height: 18px;
+        border-radius: 2px;
         object-fit: cover;
     }
 
