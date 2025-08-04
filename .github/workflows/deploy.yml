@@ -9,6 +9,8 @@ on:
       - 'frontend/package.json'
       - 'frontend/tsconfig.json'
 
+  workflow_dispatch:
+
 permissions:
   contents: write    # Required for pushing to gh-pages
   pages: write       # Required for GitHub Pages deployments
