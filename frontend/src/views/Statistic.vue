@@ -251,7 +251,7 @@
 
         <div class="chart-container">
           <h3>Статистика по континентам</h3>
-          <div class="continents-grid">
+          <div class="list">
             <div v-for="continent in continentsData" :key="continent.continent" class="continent-card">
               <h4>{{ continent.continent }}</h4>
               <div class="continent-stats">
@@ -275,3 +275,58 @@
     </div>
   </div>
 </template>
+<style scoped>
+  .filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    gap: 0.5rem;
+  }
+
+  .chart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .continent-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    background-color: var(--color-select);
+    border-bottom: solid 2px var(--color-main);
+  }
+
+  .continent-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .stat {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .label {
+    font-weight: 500;
+  }
+
+  .value {
+    font-weight: bold;
+  }
+
+  .value.confirmed {
+    color: #007bff;
+  }
+
+  .value.deaths {
+    color: #dc3545;
+  }
+
+  .value.recovered {
+    color: #28a745;
+  }
+</style>
